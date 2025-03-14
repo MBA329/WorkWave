@@ -3,7 +3,7 @@ import React from 'react'
 
 const Homepage = () => {
   return (
-    <>  <Hero title="Become a Better React dev" subtitle="Find the react Job that suits you"/> </>
+    <>  <Hero title="Become a Better React dev" subtitle="Find The React Job That Suits You"/> </>
     
  
   )
