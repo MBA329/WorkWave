@@ -24,7 +24,9 @@ const Jobpage = () => {
       }
     }
   };
-const editJob= async()
+  const editJob = ()=>{
+    navigate(`/jobs/edit/${job.id}`);
+  }
   return (
     <main className="min-h-screen bg-blue-50 py-10">
       {job ? (
@@ -33,7 +35,7 @@ const editJob= async()
           <header className="mb-6">
             <button
               onClick={() => navigate("/jobs")}
-              className="text-indigo-600 hover:text-indigo-800 font-semibold"
+              className="text-indigo-600 cursor-pointer hover:text-indigo-800 font-semibold"
             >
               &larr; Back to Job Listings
             </button>
@@ -69,12 +71,12 @@ const editJob= async()
               <div className="bg-gray-100 p-6 rounded-lg">
                 <h2 className="text-xl font-semibold mb-4">Manage Job</h2>
                 <div className="flex flex-col gap-4">
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+                  <button className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold py-2 px-4 rounded-lg">
                     Edit Job
                   </button>
                   <button
                     onClick={handleDelete}
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg"
+                    className="bg-red-500 hover:bg-red-600 cursor-pointer text-white font-bold py-2 px-4 rounded-lg"
                   >
                     Delete Job
                   </button>
@@ -92,7 +94,7 @@ const editJob= async()
   );
 };
 
-const jobLoader = async ({ params }) => {
+const jobLoader = async ({ params }: { params: { id: string } }) => {
   const res = await fetch(`/api/jobs/${params.id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch job details");

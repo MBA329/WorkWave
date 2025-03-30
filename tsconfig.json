@@ -1,0 +1,78 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Basic Options */
+    "target": "ESNext",                                /* Use the latest JavaScript features. */
+    "module": "ESNext",                                /* Use ESNext module system for compatibility with modern bundlers. */
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],          /* Include DOM and modern JavaScript features. */
+    "jsx": "react-jsx",                                /* Use the new JSX transform (React 17+). */
+
+    /* Projects */
+    // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
+    // "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
+    // "tsBuildInfoFile": "./.tsbuildinfo",              /* Specify the path to .tsbuildinfo incremental compilation file. */
+    // "disableSourceOfProjectReferenceRedirect": true,  /* Disable preferring source files instead of declaration files when referencing composite projects. */
+    // "disableSolutionSearching": true,                 /* Opt a project out of multi-project reference checking when editing. */
+    // "disableReferencedProjectLoad": true,             /* Reduce the number of projects loaded automatically by TypeScript. */
+
+    /* Language and Environment */
+    // "jsxFactory": "",                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'. */
+    // "jsxFragmentFactory": "",                         /* Specify the JSX Fragment reference used for fragments when targeting React JSX emit e.g. 'React.Fragment' or 'Fragment'. */
+    // "jsxImportSource": "",                            /* Specify module specifier used to import the JSX factory functions when using 'jsx: react-jsx*'. */
+    // "reactNamespace": "",                             /* Specify the object invoked for 'createElement'. This only applies when targeting 'react' JSX emit. */
+    // "noLib": true,                                    /* Disable including any library files, including the default lib.d.ts. */
+    // "moduleDetection": "auto",                        /* Control what method is used to detect module-format JS files. */
+
+    /* Modules */
+    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    "moduleResolution": "node",                        /* Use Node.js-style module resolution. */
+    "baseUrl": "./",                                   /* Set the base directory for resolving non-relative module names. */
+    "paths": {                                         /* Map module imports to specific paths. */
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"]
+    },
+    "typeRoots": ["./node_modules/@types"],            /* Specify type declaration files to include. */
+    "allowSyntheticDefaultImports": true,             /* Allow default imports from modules without default exports. */
+    "resolveJsonModule": true,                         /* Allow importing JSON files. */
+
+    /* JavaScript Support */
+    // "allowJs": true,                                  /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
+    // "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
+    // "maxNodeModuleJsDepth": 1,                        /* Specify the maximum folder depth used for checking JavaScript files from 'node_modules'. Only applicable with 'allowJs'. */
+
+    /* Emit */
+    "outDir": "./dist",                                /* Specify the output directory for compiled files. */
+    "removeComments": true,                            /* Remove comments in the emitted JavaScript. */
+    "sourceMap": true,                                 /* Generate source map files for debugging. */
+
+    /* Interop Constraints */
+    // "isolatedModules": true,                          /* Ensure that each file can be safely transpiled without relying on other imports. */
+    // "verbatimModuleSyntax": true,                     /* Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting. */
+    // "isolatedDeclarations": true,                     /* Require sufficient annotation on exports so other tools can trivially generate declaration files. */
+    // "erasableSyntaxOnly": true,                       /* Do not allow runtime constructs that are not part of ECMAScript. */
+    "esModuleInterop": true,                           /* Enable compatibility with CommonJS modules. */
+    // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+    "forceConsistentCasingInFileNames": true,          /* Ensure consistent casing in imports. */
+
+    /* Type Checking */
+    "strict": true,                                    /* Enable all strict type-checking options. */
+    "noImplicitAny": true,                             /* Raise errors on expressions and declarations with an implied 'any' type. */
+    "strictNullChecks": true,                          /* Ensure 'null' and 'undefined' are handled explicitly. */
+    "strictFunctionTypes": true,                       /* Ensure function parameters and return types are compatible. */
+    "strictBindCallApply": true,                       /* Check that 'bind', 'call', and 'apply' methods match the original function. */
+    "strictPropertyInitialization": true,              /* Ensure class properties are initialized in the constructor. */
+    "noImplicitThis": true,                            /* Raise errors when 'this' is implicitly typed as 'any'. */
+    "useUnknownInCatchVariables": true,                /* Default catch clause variables to 'unknown' instead of 'any'. */
+    "noUnusedLocals": true,                            /* Raise errors for unused local variables. */
+    "noUnusedParameters": true,                        /* Raise errors for unused function parameters. */
+    "noImplicitReturns": true,                         /* Raise errors for functions that don't explicitly return a value. */
+    "noFallthroughCasesInSwitch": true,                /* Raise errors for fallthrough cases in switch statements. */
+
+    /* Completeness */
+    "skipLibCheck": true                               /* Skip type checking of declaration files for faster builds. */
+  },
+  "include": ["src"],                                  /* Include all TypeScript and JavaScript files in the 'src' folder. */
+  "exclude": ["node_modules", "dist"]                  /* Exclude 'node_modules' and output directories. */
+}
