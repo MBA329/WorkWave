@@ -1,8 +1,24 @@
 import React from 'react'
+import {motion} from 'framer-motion'
+import {Link} from 'react-router-dom'
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'>
+      <motion.h1 className='text-6xl font-bold text-indigo-800'
+      initial={{y:-20,opacity:0}}
+      animate={{y:0,opacity:1}}
+      transition={{duration:1}}
+      >404 error</motion.h1>
+      <motion.p
+      className='text-lg text-gray-700 mt-5'
+      initial={{opacity:0}}
+      animate={{y:0,opacity:1}}
+      transition={{duration:0.8,delay:0.2}}
+      >  Oops! looks like The page you're looking for doesn't exist.
+</motion.p>
+<Link to={'/'} className='px-6 py-3 mt-5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out'>Go back to Home</Link>
+    </div>
   )
 }
 
