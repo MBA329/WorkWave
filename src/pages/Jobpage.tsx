@@ -1,8 +1,9 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
+import {motion} from "framer-motion";
 
-const Jobpage = () => {
+const Jobpage: React.FC = () => {
   const job = useLoaderData();
   const navigate = useNavigate();
 
@@ -74,12 +75,19 @@ const Jobpage = () => {
                   <button className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold py-2 px-4 rounded-lg">
                     Edit Job
                   </button>
-                  <button
+                  <motion.button
+                    initial={{ rotate: '0deg' }}
+                    animate={{rotate:'360deg'}}
+                    transition={{ duration: 1,
+                      ease:"backInOut"
+
+
+                     }}
                     onClick={handleDelete}
                     className="bg-red-500 hover:bg-red-600 cursor-pointer text-white font-bold py-2 px-4 rounded-lg"
                   >
                     Delete Job
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </aside>
