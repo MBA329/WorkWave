@@ -1,9 +1,16 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import JobListing from './jobListing';
-import { FadeLoader } from 'react-spinners';
+import SkeletonJobListing from './ui/Skeleton';
+interface Job {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  [key: string]: any; // Add additional fields as needed
+}
 
-const fetchJobs = async (isHome) => {
+const fetchJobs = async (isHome: boolean): Promise<Job[]> => {
   const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs';
   const res = await fetch(apiUrl);
   if (!res.ok) {
@@ -15,7 +22,7 @@ const fetchJobs = async (isHome) => {
 const JobListings = ({ isHome = true }) => {
   const { data: jobs = [], isLoading, isError, error } = useQuery({
     queryKey: ['jobs', isHome],
-    queryFn: () => fetchJobs(),
+    queryFn: () => fetchJobs(isHome),
     staleTime: 5 * 60 * 1000, // Cache data for 5 minutes
   });
   
@@ -30,7 +37,14 @@ const JobListings = ({ isHome = true }) => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {isLoading ? (
-            <FadeLoader className="size-50 mx-auto" />
+            <div className='flex justify-center gap-4 items-center col-span-3'>
+              {Array.from({ length: 3 }, (_, index) => (
+                <div key={index} className="w-full">
+
+                <SkeletonJobListing />
+                </div>
+              ))}
+            </div>
           ) : isError ? (
             <p className="text-red-500 text-center">{error.message}</p>
           ) : recentJobs.length > 0 ? (
