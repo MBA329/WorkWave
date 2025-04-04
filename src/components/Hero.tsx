@@ -9,7 +9,7 @@ interface HeroProps{
 const Hero: React.FC<HeroProps> = (props) => {
 
   const titleref = useRef<HTMLHeadingElement>(null);
-  const isTitleInView = useInView(titleref, {once:true,amount:0.2});
+  const isTitleInView = useInView(titleref, {once:true,amount:0.3});
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const isSubtitleInView = useInView(subtitleRef, {once:true,amount:0.2});
   return (
