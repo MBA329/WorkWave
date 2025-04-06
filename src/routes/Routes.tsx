@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {path:'jobs',element:<JobsPage/>},
             {path:'about-us',element:<AboutUs/>},
             {path:'jobs/:id',element:<Jobpage/>,loader:jobLoader},
-            {path:'/add-job',element:<AddJob AddjobSubmit={AddJob}/>},
+            {path:'/add-job',element:<AddJob />},
             
         ],
     },
