@@ -5,7 +5,7 @@ import HomeCards from '../components/HomeCards'
 
 const Homepage = () => {
   return (
-    <> <Hero title='become a better React developer' subtitle='explore other options in your code'/>
+    <> <Hero title='Ready to find your dream job?' subtitle='explore your various opportunities'/>
     <HomeCards/>
     <JobListings/></>
    
