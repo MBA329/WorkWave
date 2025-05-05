@@ -1,12 +1,12 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Homepage from "../pages/Homepage";
 import MainLayout from "../layout/MainLayout";
 import AboutUs from "../pages/AboutUs";
 import NotFound from "../pages/NotFound";
 import JobsPage from "../pages/JobsPage";
-import Jobpage,{jobLoader} from "../pages/Jobpage";
+import Jobpage from "../pages/Jobpage";
 import AddJob from "../pages/AddJob";
+import jobLoader from "../hooks/useJobLoader"
 
 
 const router = createBrowserRouter([

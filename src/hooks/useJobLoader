@@ -1,0 +1,11 @@
+import axios from 'axios'
+
+export const jobLoader = async({params})=>{
+    try{
+        const response = await axios.get(`/api/jobs/${params.id}`);
+        return response.data;   
+    }
+    catch(error){
+        console.error("error loading job",error)
+    }
+}

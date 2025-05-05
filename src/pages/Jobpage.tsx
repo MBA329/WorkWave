@@ -1,33 +1,23 @@
+
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 import {motion} from "framer-motion";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { Flex, Button } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
+import * as Dialog from '@radix-ui/react-dialog';
+import { Button, Text, TextField, TextArea } from '@radix-ui/themes';
+
 
 const Jobpage: React.FC = () => {
-  const job = useLoaderData();
   const navigate = useNavigate();
+  const job = useLoaderData;
 
   const handleDelete = async () => {
-    
-      try {
-        const res = await fetch(`/api/jobs/${job.id}`, {
-          method: "DELETE",
-        });
-        if (!res.ok) {
-          throw new Error("Failed to delete job");
-        }
-        
-        navigate("/jobs",{state:{refetch:true}});
-      } catch (error) {
-        console.error("Error deleting job:", error.message);
-        alert("Failed to delete the job. Please try again.");
-      }
-    
-  };
+  }
+ 
   const editJob = ()=>{
-    navigate(`/jobs/edit/${job.id}`);
+
   }
   return (
     <main className="min-h-screen bg-blue-50 py-10">
@@ -74,12 +64,93 @@ const Jobpage: React.FC = () => {
                 <h2 className="text-xl font-semibold mb-4">Manage Job</h2>
                 <div className="flex flex-col gap-4">
                   {/* Edit Job Button */}
-                  <button
-                    onClick={editJob}
-                    className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white font-bold py-2 px-4 rounded-lg"
-                  >
-                    Edit Job
-                  </button>
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <Button className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg">
+                        Edit Job
+                      </Button>
+                    </Dialog.Trigger>
+
+                    <Dialog.Portal>
+                      <Dialog.Overlay className="fixed inset-0 bg-black/50" />
+                      <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-6 w-[90%] max-w-2xl">
+                        <Dialog.Title className="text-xl font-bold mb-4">Edit Job</Dialog.Title>
+                        <Dialog.Description className="text-gray-600 mb-6">
+                          Make changes to the job listing.
+                        </Dialog.Description>
+
+                        <Flex direction="column" gap="3">
+                          {/* Job Fields */}
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Job Title</Text>
+                            <TextField.Root defaultValue="Senior React Developer" placeholder="Enter job title" />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Job Type</Text>
+                            <TextField.Root defaultValue="Full-Time" placeholder="e.g. Full-Time, Part-Time" />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Location</Text>
+                            <TextField.Root defaultValue="Boston, MA" placeholder="Enter job location" />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Salary</Text>
+                            <TextField.Root defaultValue="$70K - $80K" placeholder="Enter salary range" />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Job Description</Text>
+                            <TextArea
+                              defaultValue="We are seeking a talented Front-End Developer to join our team in Boston, MA..."
+                              placeholder="Enter job description"
+                              rows={4}
+                            />
+                          </label>
+
+                          {/* Company Fields */}
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Company Name</Text>
+                            <TextField.Root defaultValue="NewTek Solutions" placeholder="Enter company name" />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Company Description</Text>
+                            <TextArea
+                              defaultValue="NewTek Solutions is a leading technology company..."
+                              placeholder="Enter company description"
+                              rows={4}
+                            />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Contact Email</Text>
+                            <TextField.Root defaultValue="contact@teksolutions.com" placeholder="Enter contact email" />
+                          </label>
+
+                          <label>
+                            <Text as="div" size="2" mb="1" weight="bold">Contact Phone</Text>
+                            <TextField.Root defaultValue="555-555-5555" placeholder="Enter contact phone number" />
+                          </label>
+                        </Flex>
+
+                        <Flex gap="3" mt="4" justify="end">
+                          <Dialog.Close asChild>
+                            <Button variant="soft" color="gray">
+                              Cancel
+                            </Button>
+                          </Dialog.Close>
+                          <Dialog.Close asChild>
+                            <Button onClick={() => console.log('Save clicked')}>
+                              Save
+                            </Button>
+                          </Dialog.Close>
+                        </Flex>
+                      </Dialog.Content>
+                    </Dialog.Portal>
+                  </Dialog.Root>
 
                   {/* Delete Job Button with AlertDialog */}
                   <AlertDialog.Root>
@@ -137,15 +208,4 @@ const Jobpage: React.FC = () => {
   );
 };
 
-const jobLoader = async ({ params }: { params: { id: string } }) => {
-  const res = await fetch(`/api/jobs/${params.id}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch job details");
-  }
-  const data = await res.json(); 
-   console.log(data);
-
-  return data;
-};
-
-export { Jobpage as default, jobLoader };
+export default Jobpage ;

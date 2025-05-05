@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import * as Dialog from '@radix-ui/react-dialog';
+import { Button, Text, TextField, TextArea, Flex } from '@radix-ui/themes';
 
 // Define the Zod schema
 const formSchema = z.object({
@@ -81,7 +83,7 @@ const AddJob: React.FC = () => {
   };
 
   return (
-    <section className="bg-gray-100 min-h-screen flex items-center justify-center">
+    <section className="bg-gray-100 min-h-screen flex items-center justify-center pt-30">
       <div className="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
         <h1 className="text-2xl font-bold text-center mb-6">Add Job</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
