@@ -6,8 +6,7 @@ import NotFound from "../pages/NotFound";
 import JobsPage from "../pages/JobsPage";
 import Jobpage from "../pages/Jobpage";
 import AddJob from "../pages/AddJob";
-import jobLoader from "../hooks/useJobLoader"
-
+import jobLoader from "../hooks/useJobLoader";
 
 const router = createBrowserRouter([
     {
