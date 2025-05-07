@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Container:React.FC = () => {
+const Container:React.FC = ({className,children}) => {
   return (
-    <div></div>
+    <section className='bg-green-100'>
+      <div className={}>{children}</div>
+    </section>
   )
 }
 
